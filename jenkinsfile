@@ -1,0 +1,53 @@
+pipeline {
+  agent {
+    docker {
+      image 'mcr.microsoft.com/dotnet/sdk:9.0'   // .NET 9 SDK
+      args '-v $HOME/.nuget/packages:/root/.nuget/packages'
+    }
+  }
+
+  environment {
+    DOTNET_CLI_HOME = "/tmp"
+  }
+
+  stages {
+    stage('Restore') {
+      steps {
+        sh 'dotnet restore'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'dotnet build --no-restore -c Release'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'dotnet test --no-build -c Release'
+      }
+    }
+
+    stage('Publish') {
+      steps {
+        sh 'dotnet publish -c Release -o out'
+      }
+    }
+
+    stage('Docker Build') {
+      steps {
+        sh 'docker build -t HelloAPiJen:latest .'
+      }
+    }
+  }
+
+  post {
+    success {
+      echo '✅ Build and Docker image completed successfully.'
+    }
+    failure {
+      echo '❌ Build failed.'
+    }
+  }
+}
