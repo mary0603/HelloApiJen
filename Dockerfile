@@ -1,4 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+
+# Install other dependencies as needed
+RUN apt-get update && apt-get install -y libicu-dev
+
 WORKDIR /app
 EXPOSE 5179
 
