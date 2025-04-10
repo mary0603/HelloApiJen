@@ -11,7 +11,7 @@ pipeline {
         PATH = "$DOTNET_ROOT:$PATH"  // Update PATH to include the dotnet installation path
         DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 'true'
 
-        DOCKER_CLI_EXPERIMENTAL = "enabled"
+       // DOCKER_CLI_EXPERIMENTAL = "enabled"
        // DOCKER_HOST = "unix:///var/run/docker.sock"
     }
 
