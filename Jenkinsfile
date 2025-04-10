@@ -7,8 +7,8 @@ pipeline {
 
     environment {
         DOTNET_CLI_TELEMETRY_OPTOUT = '1'
-        DOTNET_ROOT = "/usr/share/dotnet" // Typical dotnet path for Linux
-        PATH = "/usr/share/dotnet:$PATH"
+        DOTNET_ROOT = "C:\\Program Files\\dotnet"  // Set the DOTNET_ROOT variable to your .NET SDK installation path
+        PATH = "$DOTNET_ROOT:$PATH"  // Update PATH to include the dotnet installation path
         DOCKER_CLI_EXPERIMENTAL = "enabled"
         DOCKER_HOST = "unix:///var/run/docker.sock"
     }
