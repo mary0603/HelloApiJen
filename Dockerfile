@@ -1,5 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 
+# Disable globalization to avoid the ICU dependency
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+
 # Install other dependencies as needed
 RUN apt-get update && apt-get install -y libicu-dev
 
