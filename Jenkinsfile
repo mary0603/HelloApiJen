@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        dotnet 'dotnet-9.0'
+        dotnetsdk 'dotnet-9.0' 
     }
 
     environment {
@@ -47,7 +47,7 @@ pipeline {
                 }
             }
         }
-
+//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
         stage('Deploy - Docker Compose') {
             steps {
                 sh 'docker-compose down || true'
