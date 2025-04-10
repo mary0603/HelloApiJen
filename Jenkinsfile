@@ -10,7 +10,8 @@ pipeline {
         DOTNET_ROOT = "C:\\Program Files\\dotnet"  // Set the DOTNET_ROOT variable to your .NET SDK installation path
         PATH = "$DOTNET_ROOT:$PATH"  // Update PATH to include the dotnet installation path
         DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 'true'
-
+        DOCKER_PATH = "C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        PATH = "$DOCKER_PATH:$PATH"
         // DOCKER_CLI_EXPERIMENTAL = "enabled"
         // DOCKER_HOST = "unix:///var/run/docker.sock"
     }
