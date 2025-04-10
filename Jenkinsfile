@@ -12,7 +12,7 @@ pipeline {
         DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 'true'
 
         DOCKER_CLI_EXPERIMENTAL = "enabled"
-        DOCKER_HOST = "unix:///var/run/docker.sock"
+       // DOCKER_HOST = "unix:///var/run/docker.sock"
     }
 
     stages {
@@ -51,10 +51,16 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build("helloapiJen:latest")
+                    dockerImage = docker.build("helloapijen:latest")
                 }
             }
         }
+        stage('Docker Test') {
+        steps {
+         sh 'docker --version'
+         }
+     }
+
 
         stage('Deploy - Docker Compose') {
             steps {
