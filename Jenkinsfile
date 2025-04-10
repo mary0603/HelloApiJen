@@ -42,6 +42,8 @@ pipeline {
 
         stage('Publish') {
             steps {
+                sh 'rm -rf out' // Clean previous publish output
+
                 sh 'dotnet publish -c Release -o out'
             }
         }
